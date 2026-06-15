@@ -771,7 +771,7 @@ Once PCI integration is fully operational:
 
 [^6]: <https://computo-journal.org/submit/>
 
-[^7]: contact us at [computo\@sfds.asso.fr](mailto:computo@sfds.asso.fr){.email}
+[^7]: contact us at [contact\@computo-journal.org](mailto:contact@computo-journal.org){.email}
 
 ## Regarding the logo
 
