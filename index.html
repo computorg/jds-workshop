@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-05">
+<meta name="dcterms.date" content="2026-06-05">
 
 <title>Computo workshop – Computo workshop</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -91,10 +94,14 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -124,7 +131,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -137,7 +144,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -156,7 +163,169 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -191,6 +360,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -244,6 +414,17 @@ window.Quarto = {
   <li><a href="#author-point-of-view-33" id="toc-author-point-of-view-33" class="nav-link" data-scroll-target="#author-point-of-view-33">Author point of view (3/3)</a></li>
   <li><a href="#editor-point-of-view" id="toc-editor-point-of-view" class="nav-link" data-scroll-target="#editor-point-of-view">Editor point of view</a></li>
   <li><a href="#year-and-a-half-report" id="toc-year-and-a-half-report" class="nav-link" data-scroll-target="#year-and-a-half-report">2year and a half report</a></li>
+  <li><a href="#partnership-with-pci-statml" id="toc-partnership-with-pci-statml" class="nav-link" data-scroll-target="#partnership-with-pci-statml">Partnership with PCI StatML</a>
+  <ul class="collapse">
+  <li><a href="#what-is-pci-statml" id="toc-what-is-pci-statml" class="nav-link" data-scroll-target="#what-is-pci-statml">🤝 What is PCI StatML?</a></li>
+  <li><a href="#current-submission-process" id="toc-current-submission-process" class="nav-link" data-scroll-target="#current-submission-process">🔄 Current Submission Process</a></li>
+  <li><a href="#future-pci-computo-route" id="toc-future-pci-computo-route" class="nav-link" data-scroll-target="#future-pci-computo-route">🔮 Future: PCI → Computo Route</a></li>
+  </ul></li>
+  <li><a href="#partnership-with-pci-statml-continued" id="toc-partnership-with-pci-statml-continued" class="nav-link" data-scroll-target="#partnership-with-pci-statml-continued">Partnership with PCI StatML (continued)</a>
+  <ul class="collapse">
+  <li><a href="#relative-independence" id="toc-relative-independence" class="nav-link" data-scroll-target="#relative-independence">📊 Relative Independence</a></li>
+  <li><a href="#current-status" id="toc-current-status" class="nav-link" data-scroll-target="#current-status">🎯 Current Status</a></li>
+  </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
   <ul class="collapse">
   <li><a href="#about-several-choices" id="toc-about-several-choices" class="nav-link" data-scroll-target="#about-several-choices">About several choices</a></li>
@@ -286,6 +467,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -358,7 +540,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 5, 2025</p>
+      <p class="date">June 5, 2026</p>
     </div>
   </div>
   
@@ -383,7 +565,7 @@ window.Quarto = {
 <section id="afternoon-session" class="level3">
 <h3 class="anchored" data-anchor-id="afternoon-session">Afternoon session</h3>
 <ul>
-<li>📝 13h30-17h00: Follow-up with personal article submission process</li>
+<li>📝 13h30-15h00: Follow-up with personal article submission process</li>
 </ul>
 </section>
 </section>
@@ -403,14 +585,11 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="team">Team</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>Editorial board</p>
-<!-- TODO: Mettre à jour le board :
-- Enlever Mathurin et Ghislain
-- Ajouter Aymeric -->
+<p>Chief Editors Associate Editors</p>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:20%;">
-<p>IT support</p>
+<p>Technical Support Community Management</p>
 </div>
 </div>
 <div class="columns">
@@ -419,23 +598,23 @@ window.Quarto = {
 <p><img src="./people/julien.jpg" class="img-fluid" width="120"></p>
 <section id="julien-chiquet-chief-editor" class="level4">
 <h4 class="anchored" data-anchor-id="julien-chiquet-chief-editor">Julien Chiquet <small>(chief editor)</small></h4>
-<p><small>Stat. learning, DR INRAE<br> Paris-Saclay University</small></p>
+<p><small>Stat. learning for life science<br> Paris-Saclay University, INRAE</small></p>
 </section>
 </div>
 </div><div class="column" style="width:20%;">
 <div class="people">
 <p><img src="./people/pierre.jpg" class="img-fluid" width="120"></p>
-<section id="pierre-neuvial" class="level4">
-<h4 class="anchored" data-anchor-id="pierre-neuvial">Pierre Neuvial</h4>
-<p><small>Statistics, DR CNRS<br> IMT Toulouse<br></small></p>
+<section id="pierre-neuvial-chief-editor" class="level4">
+<h4 class="anchored" data-anchor-id="pierre-neuvial-chief-editor">Pierre Neuvial <small>(chief editor)</small></h4>
+<p><small>Statistics<br> CNRS, IMT Toulouse</small></p>
 </section>
 </div>
 </div><div class="column" style="width:20%;">
 <div class="people">
-<p><img src="./people/mathurin.jpg" class="img-fluid" width="120"></p>
-<section id="mathurin-massias" class="level4">
-<h4 class="anchored" data-anchor-id="mathurin-massias">Mathurin Massias</h4>
-<p><small>Optim./Machine-Learning<br> CR INRIA Lyon</small></p>
+<p><img src="./people/mathieu.jpg" class="img-fluid" width="120"></p>
+<section id="mathieu-carrière" class="level4">
+<h4 class="anchored" data-anchor-id="mathieu-carrière">Mathieu Carrière</h4>
+<p><small>Topological data analysis<br> Inria, Sophia Antipolis</small></p>
 </section>
 </div>
 </div><div class="column" style="width:10%;">
@@ -445,7 +624,7 @@ window.Quarto = {
 <p><img src="./people/fradav.jpg" class="img-fluid" width="120"></p>
 <section id="fra.-dav.-collin" class="level4">
 <h4 class="anchored" data-anchor-id="fra.-dav.-collin">Fra.-Dav. Collin</h4>
-<p><small>CS/Stats/ML, IR CNRS<br> IMAG, Montpellier University</small></p>
+<p><small>Research Engineer, IA for Microelectronics<br> LIRMM, CNRS, Montpellier</small></p>
 </section>
 </div>
 </div>
@@ -453,10 +632,10 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:20%;">
 <div class="people">
-<p><img src="./people/nelle.jpg" class="img-fluid" width="120"></p>
-<section id="nelle-varoquaux" class="level4">
-<h4 class="anchored" data-anchor-id="nelle-varoquaux">Nelle Varoquaux</h4>
-<p><small>Machine learning, CR CNRS<br> Grenoble Alpes University</small></p>
+<p><img src="./people/aymeric.jpg" class="img-fluid" width="120"></p>
+<section id="aymeric-stamm" class="level4">
+<h4 class="anchored" data-anchor-id="aymeric-stamm">Aymeric Stamm</h4>
+<p><small>Research Engineer, Statistics<br> LMJL Nantes, CNRS</small></p>
 </section>
 </div>
 </div><div class="column" style="width:20%;">
@@ -464,25 +643,25 @@ window.Quarto = {
 <p><img src="./people/marie-pierre.jpg" class="img-fluid" width="120"></p>
 <section id="marie-pierre-étienne" class="level4">
 <h4 class="anchored" data-anchor-id="marie-pierre-étienne">Marie-Pierre Étienne</h4>
-<p><small>Statistics, MCF<br> Institut Agro Rennes-Angers</small></p>
+<p><small>Statistical methods for ecology<br> ENSAI CREST, Rennes</small></p>
 </section>
 </div>
 </div><div class="column" style="width:20%;">
 <div class="people">
-<p><img src="./people/chloe.jpg" class="img-fluid" width="120"></p>
-<section id="chloé-azencott" class="level4">
-<h4 class="anchored" data-anchor-id="chloé-azencott">Chloé Azencott</h4>
-<p><small>Machine Learning CR MinesParisTech</small></p>
+<p><img src="./people/nelle.jpg" class="img-fluid" width="120"></p>
+<section id="nelle-varoquaux" class="level4">
+<h4 class="anchored" data-anchor-id="nelle-varoquaux">Nelle Varoquaux</h4>
+<p><small>ML and causal inference for genomics<br> CNRS, Grenoble Alpes</small></p>
 </section>
 </div>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:20%;">
 <div class="people">
-<p><img src="./people/ghislain.jpg" class="img-fluid" width="120"></p>
-<section id="ghislain-durif" class="level4">
-<h4 class="anchored" data-anchor-id="ghislain-durif">Ghislain Durif</h4>
-<p><small>Stats/ML/dev, IR CNRS<br> LBMC, ENS LYON</small></p>
+<p><img src="./people/chloe.jpg" class="img-fluid" width="120"></p>
+<section id="chloé-azencott" class="level4">
+<h4 class="anchored" data-anchor-id="chloé-azencott">Chloé Azencott</h4>
+<p><small>ML for therapeutic research<br> Mines ParisTech</small></p>
 </section>
 </div>
 </div>
@@ -605,7 +784,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Assessment
+<span class="screen-reader-only">Note</span>Assessment
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -628,7 +807,7 @@ Assessment
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Point of view
+<span class="screen-reader-only">Tip</span>Point of view
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -653,7 +832,7 @@ Point of view
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Scientific perimeter
+<span class="screen-reader-only">Note</span>Scientific perimeter
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -666,7 +845,7 @@ Scientific perimeter
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Open access
+<span class="screen-reader-only">Tip</span>Open access
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -690,7 +869,7 @@ Open access
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Reproducible
+<span class="screen-reader-only">Important</span>Reproducible
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -731,7 +910,7 @@ Reproducible
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>Official launch at the end of 2021</p>
 <center>
-<a href="https://computo.sfds.asso.fr"><img src="img/computo_website.png" height="280"></a> <a href="https://github.com/computorg/"><img src="img/computo_github-group.png" height="280"></a>
+<a href="https://computo-journal.org"><img src="img/computo_website.png" height="280"></a> <a href="https://github.com/computorg/"><img src="img/computo_github-group.png" height="280"></a>
 </center>
 <section id="economical-model" class="level3">
 <h3 class="anchored" data-anchor-id="economical-model">“Economical” model</h3>
@@ -759,7 +938,11 @@ Reproducible
 <ul>
 <li>🕵️ Anonymous exchange published after acceptance</li>
 <li>🧑‍⚖️ Reviewer pool (you can join)</li>
-<li>🔄 [<em>Ongoing switch from Scholastica to Open review</em>]</li>
+<li>🔄 Ongoing migration to <em>Peer Community In</em> system
+<ul>
+<li>Former system: OpenReview</li>
+<li>New system: <a href="https://computo-journal.org/" class="uri">https://computo-journal.org/</a> and <a href="https://statml.peercommunityin.org/" class="uri">https://statml.peercommunityin.org/</a></li>
+</ul></li>
 </ul>
 </section>
 </div><div class="column" style="width:35%;">
@@ -785,7 +968,7 @@ Reproducible
 <li>Rendering includes text, code and results (from code computations)</li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown {markdown} code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown {markdown} code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My article"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -793,7 +976,7 @@ Reproducible
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="note-on-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="note-on-quarto">Note on quarto</h2>
@@ -838,9 +1021,9 @@ Reproducible
 </div><div class="column" style="width:50%;">
 <section id="document-template" class="level4">
 <h4 class="anchored" data-anchor-id="document-template">Document template</h4>
-<p><a href="https://computo.sfds.asso.fr/repos/">Git <code>template</code> repository</a></p>
+<p><a href="https://computo-journal.org/site/guidelines-authors.html#sec-templates">Git <code>template</code> repository</a></p>
 <p>with template notebook document + doc + pre-configured compilation and publication setup</p>
-<p><a href="https://computo.sfds.asso.fr/repos/"><img src="img/computo_template_repositories.png" class="img-fluid"></a></p>
+<p><a href="https://computo-journal.org/site/guidelines-authors.html#sec-templates"><img src="img/computo_template_repositories.png" class="img-fluid"></a></p>
 </section>
 </div>
 </div>
@@ -898,17 +1081,17 @@ Tip
 <section id="step-2-configure-the-environment-dependencies-management" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-configure-the-environment-dependencies-management">Step 2: configure the environment (dependencies management)</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Example in Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Example in R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Example in Julia</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Example in Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Example in R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Example in Julia</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="columns">
 <div class="column" style="width:75%;">
 <p><code>venv</code>: use a virtual environment and generate the <code>requirements.txt</code> file</p>
 </div><div class="column" style="width:25%;">
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># requirements.txt</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># requirements.txt</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">jupyter</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">matplotlib</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">numpy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">numpy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -917,10 +1100,10 @@ Tip
 <div class="column" style="width:58%;">
 <p><code>renv</code>: generate the <code>renv.lock</code> file</p>
 </div><div class="column" style="width:42%;">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">install</span>(<span class="st">"ggplot2"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or equivalently install.packages("ggplot2")</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -929,8 +1112,8 @@ Tip
 <div class="column" style="width:75%;">
 <p><code>Pkg</code>: native <code>Julia</code> package manager (with generated <code>Project.toml</code> et <code>Manifest.toml</code> files)</p>
 </div><div class="column" style="width:25%;">
-<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>add Plots</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>add IJulia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>add Plots</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>add IJulia</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -953,9 +1136,13 @@ Tip
 <h3 class="anchored" data-anchor-id="step-4-submit-your-article">Step 4: submit your article</h3>
 <p>If the CI process succeeds, both HTML and PDF versions are published on the <a href="https://computorg.github.io/template-computo-R/"><em>github-page</em></a> associated to the repository</p>
 <p><br><br></p>
-<section id="scholastica-open-review-soon-to-be-replaced-by-pci" class="level4">
-<h4 class="anchored" data-anchor-id="scholastica-open-review-soon-to-be-replaced-by-pci"><s>Scholastica</s> Open review (soon to be replaced by PCI)</h4>
-<p><a href="https://openreview.net/group?id=Computo" class="uri">https://openreview.net/group?id=Computo</a></p>
+<section id="submission-system-migrating-to-pci" class="level4">
+<h4 class="anchored" data-anchor-id="submission-system-migrating-to-pci">Submission system (migrating to PCI)</h4>
+<p>The editorial process is migrating from OpenReview to the <em>Peer Community In</em> platform:</p>
+<ul>
+<li>Former platform: <a href="https://openreview.net/group?id=Computo" class="uri">https://openreview.net/group?id=Computo</a></li>
+<li>New platform: <a href="https://computo-journal.org/" class="uri">https://computo-journal.org/</a> and <a href="https://statml.peercommunityin.org/" class="uri">https://statml.peercommunityin.org/</a></li>
+</ul>
 <p>Submit:</p>
 <ul>
 <li>your article PDF (scientific content review)</li>
@@ -998,13 +1185,89 @@ Tip
 <h2 class="anchored" data-anchor-id="year-and-a-half-report">2year and a half report</h2>
 <p><br></p>
 <p>🥲 Fully operational + doi, ISSN</p>
-<p>🙂 7 published articles, 3 in pre-production, 6 under review (more details <a href="https://computo.sfds.asso.fr/publications/">here</a>)</p>
+<p>🙂 7 published articles, 3 in pre-production, 6 under review (more details <a href="https://computo-journal.org/publications/">here</a>)</p>
 <p>🙂 x presentations (Montpellier, Toronto, Humastica, Grenoble, RR2023, etc.)</p>
 <p>🙂 <a href="https://www.recherche-reproductible.fr/">French reproducible research network</a></p>
 <p>🤯 Difficult to find reviewers</p>
 <p>🤔 Institutional support?</p>
 <p>🤔 Changing practices in the scientific community?</p>
 <p><br></p>
+</section>
+<section id="partnership-with-pci-statml" class="level2">
+<h2 class="anchored" data-anchor-id="partnership-with-pci-statml">Partnership with PCI StatML</h2>
+<section id="what-is-pci-statml" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-pci-statml">🤝 What is PCI StatML?</h3>
+<p><strong>PCI StatML</strong> (<a href="https://statml.peercommunityin.org/" class="uri">https://statml.peercommunityin.org/</a>)</p>
+<ul>
+<li>📝 <strong>Free, community-driven</strong> peer review platform</li>
+<li>🎯 Scope: statistics and machine learning</li>
+<li>🤝 Computo is a <a href="https://peercommunityin.org/pci-friendly-journals/"><em>PCI-friendly</em> journal</a></li>
+</ul>
+</section>
+<section id="current-submission-process" class="level3">
+<h3 class="anchored" data-anchor-id="current-submission-process">🔄 Current Submission Process</h3>
+<p><strong>Direct submission to Computo via OpenReview</strong></p>
+<ol type="1">
+<li>Submit via OpenReview (<a href="https://openreview.net/group?id=Computo" class="uri">https://openreview.net/group?id=Computo</a>)</li>
+<li>Peer review + <strong>reproducibility test</strong> (formatting, code, data)</li>
+<li>Publication in Computo</li>
+</ol>
+</section>
+<section id="future-pci-computo-route" class="level3">
+<h3 class="anchored" data-anchor-id="future-pci-computo-route">🔮 Future: PCI → Computo Route</h3>
+<p>Once PCI integration is fully operational:</p>
+<ol type="1">
+<li>Submit to PCI StatML</li>
+<li>Peer review (PCI)</li>
+<li>PCI recommendation</li>
+<li><strong>Reproducibility test</strong> Computo (no additional scientific review)</li>
+<li>Publication in Computo</li>
+</ol>
+<p><br></p>
+<hr>
+</section>
+</section>
+<section id="partnership-with-pci-statml-continued" class="level2">
+<h2 class="anchored" data-anchor-id="partnership-with-pci-statml-continued">Partnership with PCI StatML (continued)</h2>
+<section id="relative-independence" class="level3">
+<h3 class="anchored" data-anchor-id="relative-independence">📊 Relative Independence</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>PCI StatML</th>
+<th>Computo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Role</strong></td>
+<td>Peer review platform</td>
+<td>Reproducible journal</td>
+</tr>
+<tr class="even">
+<td><strong>Scope</strong></td>
+<td>All Stat/ML domains</td>
+<td><strong>Strong reproducibility focus</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Outlets</strong></td>
+<td>Multiple journals possible</td>
+<td>Computo only</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="current-status" class="level3">
+<h3 class="anchored" data-anchor-id="current-status">🎯 Current Status</h3>
+<ul>
+<li>✅ <strong>OpenReview</strong>: currently active for all Computo submissions</li>
+<li>🤝 <strong>PCI partnership</strong>: launched, but not yet operational for submissions</li>
+<li>⚠️ <strong>Migration</strong>: PCI platform integration ongoing (details TBD: submission format, HAL deposition, etc.)</li>
+<li>🚀 <strong>Future benefit</strong>: accelerated process for PCI-recommended articles (scientific review waived, reproducibility test only)</li>
+</ul>
+<p><br></p>
+</section>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
@@ -1018,7 +1281,13 @@ Tip
 <section id="comparisoninspiration" class="level3">
 <h3 class="anchored" data-anchor-id="comparisoninspiration">Comparison/inspiration</h3>
 <ul>
-<li><a href="https://peercommunityin.org/">Peer Community-In (PCI)</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, <a href="https://www.episciences.org/">EpiSciences</a>: peer review and publication of articles, but not reproducible by default, but we have just built an official community, stay tuned!</li>
+<li><a href="https://ropensci.org/">rOpenSci</a> / <a href="https://www.pyopensci.org/">pyOpenSci</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>: software peer review for R/Python packages
+<ul>
+<li>📦 <strong>Focus</strong>: package quality, documentation, API design, testing</li>
+<li>🤝 <strong>Complementary to Computo</strong>: rOpenSci reviews <em>software packages</em>, Computo publishes <em>scientific articles</em> with reproducible computations</li>
+<li>📰 <strong>Blog post</strong>: <a href="https://ropensci.org/blog/2025/11/06/computo-journal-reproducible-research-statistics-machine-learning/">“Computo - A Journal for Transparent and Reproducible Research”</a></li>
+</ul></li>
+<li><a href="https://www.episciences.org/">EpiSciences</a>: peer review and publication, but not reproducible by default</li>
 <li><a href="https://rescience.github.io/" class="uri">https://rescience.github.io/</a>: “remake” published articles</li>
 <li><a href="https://distill.pub" class="uri">https://distill.pub</a> (discontinued): technically more complicated and only ML/AI-oriented</li>
 </ul>
@@ -1148,7 +1417,7 @@ notebook rendering with the results of the external process
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Requirement
+<span class="screen-reader-only">Note</span>Requirement
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1170,7 +1439,7 @@ When applicable, the switch from external to editorial reproducibility is done w
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Requirement
+<span class="screen-reader-only">Warning</span>Requirement
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1240,14 +1509,14 @@ Requirement
 <section id="rendering-the-document" class="level2">
 <h2 class="anchored" data-anchor-id="rendering-the-document">Rendering the document</h2>
 <p>Try to render the document with quarto, it should produce a pdf and an html document.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="making-the-ci-work" class="level2">
 <h2 class="anchored" data-anchor-id="making-the-ci-work">Making the CI work</h2>
 <p>ONce you’re happy with the result, it’s time to push the changes to GitHub.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"My first article"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will trigger the CI workflow, which will run the tests and render the document.</p>
 </section>
 <section id="checking-the-ci" class="level2">
@@ -1276,13 +1545,26 @@ Requirement
 <li id="fn3"><p>or as a <em>gitlab</em> page when <em>gitlab</em> will be supported (soon)<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>and soon the <code>.gitlab-ci.yml</code> file for the <em>gitlab</em> CI/CD configuration<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>“free and open-source”<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Computo is a <a href="https://peercommunityin.org/pci-friendly-journals/">PCI-friendly journal</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p><a href="https://computo.sfds.asso.fr/submit/" class="uri">https://computo.sfds.asso.fr/submit/</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>See previous slides for PCI StatML partnership details.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://computo-journal.org/submit/" class="uri">https://computo-journal.org/submit/</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>contact us at <a href="mailto:computo@sfds.asso.fr" class="email">computo@sfds.asso.fr</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1332,13 +1614,14 @@ Requirement
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
